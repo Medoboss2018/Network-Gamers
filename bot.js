@@ -20,7 +20,7 @@ client.on("guildMemberAdd", m => {
     };
 });
 
-const adminprefix = "$";
+const adminprefix = "&";
 const devs = ['439393453332234243','439393453332234243'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
