@@ -62,26 +62,22 @@ client.on('message', message => {
     }
 });
 
-client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'welcome');
-    let memberavatar = member.user.avatarURL
-      if (!channel) return;
-    let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setThumbnail(memberavatar)
-        .addField(':running_shirt_with_sash: | name :  ',`${member}`)
-        .addField(':loudspeaker: | '`اهلاً بك في السيرفر, ${member}`)
-        .addField(':		id: | user :', "**[" + `${member.id}` + "]**" )
-                .addField('?| انت العضو رقم',`${member.guild.memberCount}`)
-               
-                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
-                     
-                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
-                                       
-     .setFooter(`${member.guild.name}`)
-        .setTimestamp()
-   
-      channel.sendEmbed(embed);
+client.on('guildMemberAdd', msg => { 
+    var embed = new Discord.RichEmbed()
+    .setAuthor(msg.user.username, msg.user.avatarURL)
+    .setThumbnail(msg.user.avatarURL)
+    .setImage('https://cdn.discordapp.com/attachments/518580986204651531/520184929435516928/unknown.png')     
+    .setTitle('New Member!')
+    .setDescription('Welcome To server')
+    .addField('**ID Member:',"" +  msg.user.id, true)
+    .addField('**Tag Member**', msg.user.discriminator, true)
+    .addField('**Member Created At', msg.user.createdAt, true)
+    .addField(' 👤   You Number',`**[ ${msg.guild.memberCount} ]**`,true)
+    .setColor('GREEN')
+    .setFooter(msg.guild.name, msg.guild.iconURL, true)
+    var channel = msg.guild.channels.find('name', 'chat')         
+    if (!channel) return;
+    channel.send({embed : embed});
     });
 
 client.login(process.env.BOT_TOKEN);
