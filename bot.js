@@ -82,28 +82,28 @@ client.on('guildMemberAdd', msg => {
 
 client.on("ready", async  => {
 setInterval(function(){
-client.channels.find('id', 'ايدي الروم').setName("W");
-client.channels.find('id', 'ايدي الروم').setName("We");
-client.channels.find('id', 'ايدي الروم').setName("Wel");
-client.channels.find('id', 'ايدي الروم').setName("Welc");
-client.channels.find('id', 'ايدي الروم').setName("Welco");
-client.channels.find('id', 'ايدي الروم').setName("Welcom");
-client.channels.find('id', 'ايدي الروم').setName("Welcome");
-client.channels.find('id', 'ايدي الروم').setName("Welcome T");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To N");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To Ne");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To Net");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To Netw");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To Netwo");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To Networ");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To Network");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To Network G");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To Network Ga");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To Network Gam");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To Network Game");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To Network Gamer");
-client.channels.find('id', 'ايدي الروم').setName("Welcome To Network Gamers");
+client.channels.find('id', '520725418576183296').setName("W");
+client.channels.find('id', '520725418576183296').setName("We");
+client.channels.find('id', '520725418576183296').setName("Wel");
+client.channels.find('id', '520725418576183296').setName("Welc");
+client.channels.find('id', '520725418576183296').setName("Welco");
+client.channels.find('id', '520725418576183296').setName("Welcom");
+client.channels.find('id', '520725418576183296').setName("Welcome");
+client.channels.find('id', '520725418576183296').setName("Welcome T");
+client.channels.find('id', '520725418576183296').setName("Welcome To");
+client.channels.find('id', '520725418576183296').setName("Welcome To N");
+client.channels.find('id', '520725418576183296').setName("Welcome To Ne");
+client.channels.find('id', '520725418576183296').setName("Welcome To Net");
+client.channels.find('id', '520725418576183296').setName("Welcome To Netw");
+client.channels.find('id', '520725418576183296').setName("Welcome To Netwo");
+client.channels.find('id', '520725418576183296').setName("Welcome To Networ");
+client.channels.find('id', '520725418576183296').setName("Welcome To Network");
+client.channels.find('id', '520725418576183296').setName("Welcome To Network G");
+client.channels.find('id', '520725418576183296').setName("Welcome To Network Ga");
+client.channels.find('id', '520725418576183296').setName("Welcome To Network Gam");
+client.channels.find('id', '520725418576183296').setName("Welcome To Network Game");
+client.channels.find('id', '520725418576183296').setName("Welcome To Network Gamer");
+client.channels.find('id', '520725418576183296').setName("Welcome To Network Gamers");
   }, 3000);
 });
 
