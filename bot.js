@@ -84,34 +84,6 @@ client.on('guildMemberAdd', member => {
       channel.sendEmbed(embed);
     });
 
-client.on("ready", async  => {
-setInterval(function(){
-client.channels.find('id', '520726035768016901').setName("N");
-client.channels.find('id', '520726035768016901').setName("Ne");
-client.channels.find('id', '520726035768016901').setName("Net");
-client.channels.find('id', '520726035768016901').setName("Netw");
-client.channels.find('id', '520726035768016901').setName("Netwo");
-client.channels.find('id', '520726035768016901').setName("Networ");
-client.channels.find('id', '520726035768016901').setName("Network");
-client.channels.find('id', '520726035768016901').setName("Network ");
-client.channels.find('id', '520726035768016901').setName("Network G");
-client.channels.find('id', '520726035768016901').setName("Network Ga");
-client.channels.find('id', '520726035768016901').setName("Network Gam");
-client.channels.find('id', '520726035768016901').setName("Network Game");
-client.channels.find('id', '520726035768016901').setName("Network Gamer");
-client.channels.find('id', '520726035768016901').setName("Network Gamers");
-
-  }, 5000);
-});
-
-client.on('message', message=> {
-    if (message.author.bot) return;
-    if (message.isMentioned(client.user))
-    {
-    message.reply(" كيف اقدر اساعدك!!");
-    }
-});
-
 client.on('message', message => {
  
     if (message.content === "$bot") {
@@ -131,6 +103,30 @@ var day = message.guild.createdAt.getDate()
      message.channel.sendEmbed(embed);
 }
  
+});
+
+client.on('guildMemberAdd', member=> {
+    member.addRole(member.guild.roles.find("name","-| Member"));
+    });
+
+client.on("ready", async  => {
+setInterval(function(){
+client.channels.find('id', '520726035768016901').setName("N");
+client.channels.find('id', '520726035768016901').setName("Ne");
+client.channels.find('id', '520726035768016901').setName("Net");
+client.channels.find('id', '520726035768016901').setName("Netw");
+client.channels.find('id', '520726035768016901').setName("Netwo");
+client.channels.find('id', '520726035768016901').setName("Networ");
+client.channels.find('id', '520726035768016901').setName("Network");
+client.channels.find('id', '520726035768016901').setName("Network ");
+client.channels.find('id', '520726035768016901').setName("Network G");
+client.channels.find('id', '520726035768016901').setName("Network Ga");
+client.channels.find('id', '520726035768016901').setName("Network Gam");
+client.channels.find('id', '520726035768016901').setName("Network Game");
+client.channels.find('id', '520726035768016901').setName("Network Gamer");
+client.channels.find('id', '520726035768016901').setName("Network Gamers");
+
+  }, 7000);
 });
 
 client.login(process.env.BOT_TOKEN);
