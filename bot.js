@@ -97,7 +97,7 @@ client.channels.find('id', '520726035768016901').setName("Network Game");
 client.channels.find('id', '520726035768016901').setName("Network Gamer");
 client.channels.find('id', '520726035768016901').setName("Network Gamers");
 
-  }, 5000);
+  }, 10000);
 });
 
 client.login(process.env.BOT_TOKEN);
