@@ -62,28 +62,6 @@ client.on('message', message => {
     }
 });
 
-client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'welcome');
-    let memberavatar = member.user.avatarURL
-      if (!channel) return;
-    let embed = new Discord.RichEmbed()
-        .setColor('PURPLE')
-        .setThumbnail(memberavatar)
-        .addField('🎽 | name :  ',`${member}`)
-        .addField('📢 | اهلا بك في مجتمعك الجديد' , `Welcome to the server, ${member}`)
-        .addField('🆔 | user :', "**[" + `${member.id}` + "]**" )
-                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
-               
-                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
-                     
-                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
-                                       
-     .setFooter(`${member.guild.name}`)
-        .setTimestamp()
-   
-      channel.sendEmbed(embed);
-    });
-
 client.on('message', message => {
  
     if (message.content === "$bot") {
@@ -128,5 +106,28 @@ client.channels.find('id', '520726035768016901').setName("Network Gamers");
 
   }, 7000);
 });
+
+
+client.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', 'hello');
+    let memberavatar = member.user.avatarURL
+      if (!channel) return;
+    let embed = new Discord.RichEmbed()
+        .setColor('PURPLE')
+        .setThumbnail(memberavatar)
+        .addField('🎽 | name :  ',`${member}`)
+        .addField('📢 | اهلا بك في مجتمعك الجديد' , `Welcome to the server, ${member}`)
+        .addField('🆔 | user :', "**[" + `${member.id}` + "]**" )
+                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
+               
+                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
+                     
+                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
+                                       
+     .setFooter(`${member.guild.name}`)
+        .setTimestamp()
+   
+      channel.sendEmbed(embed);
+    });
 
 client.login(process.env.BOT_TOKEN);
