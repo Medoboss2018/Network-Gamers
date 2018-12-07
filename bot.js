@@ -80,4 +80,31 @@ client.on('guildMemberAdd', msg => {
     channel.send({embed : embed});
     });
 
+client.on("ready", async  => {
+setInterval(function(){
+client.channels.find('id', 'ايدي الروم').setName("W");
+client.channels.find('id', 'ايدي الروم').setName("We");
+client.channels.find('id', 'ايدي الروم').setName("Wel");
+client.channels.find('id', 'ايدي الروم').setName("Welc");
+client.channels.find('id', 'ايدي الروم').setName("Welco");
+client.channels.find('id', 'ايدي الروم').setName("Welcom");
+client.channels.find('id', 'ايدي الروم').setName("Welcome");
+client.channels.find('id', 'ايدي الروم').setName("Welcome T");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To N");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To Ne");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To Net");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To Netw");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To Netwo");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To Networ");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To Network");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To Network G");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To Network Ga");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To Network Gam");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To Network Game");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To Network Gamer");
+client.channels.find('id', 'ايدي الروم').setName("Welcome To Network Gamers");
+  }, 3000);
+});
+
 client.login(process.env.BOT_TOKEN);
