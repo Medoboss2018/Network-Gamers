@@ -104,4 +104,12 @@ client.channels.find('id', '520726035768016901').setName("Network Gamers");
   }, 5000);
 });
 
+client.on('message', message=> {
+    if (message.author.bot) return;
+    if (message.isMentioned(client.user))
+    {
+    message.reply(" كيف اقدر اساعدك!!");
+    }
+});
+
 client.login(process.env.BOT_TOKEN);
