@@ -456,6 +456,20 @@ client.on('message', message => {
 }
 });
 
+client.on("message", async message => {
+    var prefix = "$";
+    if(message.content.startsWith(prefix + "banslist")) {
+        if(!message.guild) return;
+                if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('**Sorry But You Dont Have Permission** `BAN_MEMBERS`' );
+        message.guild.fetchBans()
+        .then(bans => {
+            let b = bans.size;
+            let bb = bans.map(a => `${a}`).join(" - ");
+            message.channel.send(`**\`${b}\` | ${bb}**`);
+        });
+    }
+});
+
 client.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'hello');
     let memberavatar = member.user.avatarURL
@@ -477,18 +491,5 @@ client.on('guildMemberAdd', member => {
    
       channel.sendEmbed(embed);
     });
-
-client.on("message", async message => {
-    if(message.content.startsWith(prefix + "banslist")) {
-        if(!message.guild) return;
-                if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('**Sorry But You Dont Have Permission** `BAN_MEMBERS`' );
-        message.guild.fetchBans()
-        .then(bans => {
-            let b = bans.size;
-            let bb = bans.map(a => `${a}`).join(" - ");
-            message.channel.send(`**\`${b}\` | ${bb}**`);
-        });
-    }
-});
 
 client.login(process.env.BOT_TOKEN);
