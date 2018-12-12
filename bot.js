@@ -583,7 +583,7 @@ client.on('message', message => {
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var prefix = "$";
+var prefix = "d";
 var adminprefix = '$'
 const developers = ["439393453332234243","359108632656478208"]
 client.on('message', message => {
