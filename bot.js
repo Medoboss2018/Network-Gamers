@@ -615,7 +615,6 @@ client.on('guildMemberAdd', member => { //LAST CODES -HONRAR-
      stewart.send(`<@${member.user.id}> تمت الدعوه من <@${inviter.id}>`);
    //  stewart.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
   });
-})
 
 client.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'hello');
