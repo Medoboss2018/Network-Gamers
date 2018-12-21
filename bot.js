@@ -58,30 +58,6 @@ var day = message.guild.createdAt.getDate()
  
 });
 
-client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","-| Member"));
-    });
-
-client.on("ready", async  => {
-setInterval(function(){
-client.channels.find('id', '525055619292725248').setName("N");
-client.channels.find('id', '525055619292725248').setName("Ne");
-client.channels.find('id', '525055619292725248').setName("Net");
-client.channels.find('id', '525055619292725248').setName("Netw");
-client.channels.find('id', '525055619292725248').setName("Netwo");
-client.channels.find('id', '525055619292725248').setName("Networ");
-client.channels.find('id', '525055619292725248').setName("Network");
-client.channels.find('id', '525055619292725248').setName("Network ");
-client.channels.find('id', '525055619292725248').setName("Network G");
-client.channels.find('id', '525055619292725248').setName("Network Ga");
-client.channels.find('id', '525055619292725248').setName("Network Gam");
-client.channels.find('id', '525055619292725248').setName("Network Game");
-client.channels.find('id', '525055619292725248').setName("Network Gamer");
-client.channels.find('id', '525055619292725248').setName("Network Gamers");
-
-  }, 7000);
-});
-
 client.on("roleCreate", role => {
   client.setTimeout(() => {
     role.guild.fetchAuditLogs({
