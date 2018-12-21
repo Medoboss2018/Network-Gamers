@@ -571,7 +571,7 @@ message.guild.createChannel('Talk ◥', 'voice')
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`3play`,"http://twitch.tv/medo149")
+client.user.setGame(`Miss_NiVo`,"http://twitch.tv/medo149")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
