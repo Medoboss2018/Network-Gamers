@@ -445,96 +445,6 @@ client.on("message", async message => {
     }
 });
 
-client.on('message',async message => {
-    const moment = require('moment');
-const ms = require('ms')
-    var prefix = "$";
-  var time = moment().format('Do MMMM YYYY , hh:mm');
-  var room;
-  var title;
-  var duration;
-  var currentTime = new Date(),
-hours = currentTime.getHours() + 3 ,
-minutes = currentTime.getMinutes(),
-done = currentTime.getMinutes() + duration,
-seconds = currentTime.getSeconds();
-if (minutes < 10) {
-minutes = "0" + minutes;
-}
-var suffix = "AM";
-if (hours >= 12) {
-suffix = "PM";
-hours = hours - 12;
-}
-if (hours == 0) {
-hours = 12;
-}
- 
-  var filter = m => m.author.id === message.author.id;
-  if(message.content.startsWith(prefix + "gstart")) {
- 
-    if(!message.guild.member(message.author).hasPermission('MANAGE_GUILD')) return message.channel.send(':heavy_multiplication_x:| **يجب أن يكون لديك خاصية التعديل على السيرفر**');
-    message.channel.send(`:eight_pointed_black_star:| **Send Name channel For the Giveaway**`).then(msg => {
-      message.channel.awaitMessages(filter, {
-        max: 1,
-        time: 20000,
-        errors: ['time']
-      }).then(collected => {
-        let room = message.guild.channels.find('name' , collected.first().content);
-        if(!room) return message.channel.send(':heavy_multiplication_x:| **i Found It :(**');
-        room = collected.first().content;
-        collected.first().delete();
-        msg.edit(':eight_pointed_black_star:| **Time For The Giveaway**').then(msg => {
-          message.channel.awaitMessages(filter, {
-            max: 1,
-            time: 20000,
-            errors: ['time']
-          }).then(collected => {
-            if(!collected.first().content.match(/[1-60][s,m,h,d,w]/g)) return message.channel.send('**The Bot Not Support This Time**');
-            duration = collected.first().content
-            collected.first().delete();
-            msg.edit(':eight_pointed_black_star:| **Now send The Present **').then(msg => {
-              message.channel.awaitMessages(filter, {
-                max: 1,
-                time: 20000,
-                errors: ['time']
-              }).then(collected => {
-                title = collected.first().content;
-                collected.first().delete();
-                msg.delete();
-                message.delete();
-                try {
-                  let giveEmbed = new Discord.RichEmbed()
-                  .setDescription(`**${title}** \nReact With 🎉 To Enter! \nTime remaining : ${duration} \n **Created at :** ${hours}:${minutes}:${seconds} ${suffix}`)
-                  .setFooter(message.author.username, message.author.avatarURL);
-                  message.guild.channels.find("name" , room).send(' :heavy_check_mark: **Giveaway Created** :heavy_check_mark:' , {embed: giveEmbed}).then(m => {
-                     let re = m.react('🎉');
-                     setTimeout(() => {
-                       let users = m.reactions.get("🎉").users
-                       let list = users.array().filter(u => u.id !== m.author.id !== client.user.id);
-                       let gFilter = list[Math.floor(Math.random() * list.length) + 0]
-                       let endEmbed = new Discord.RichEmbed()
-                       .setAuthor(message.author.username, message.author.avatarURL)
-                       .setTitle(title)
-                       .addField('Giveaway Ended !🎉',`Winners : ${gFilter} \nEnded at :`)
-                       .setTimestamp()
-                     m.edit('** 🎉 GIVEAWAY ENDED 🎉**' , {embed: endEmbed});
-                    message.guild.channels.find("name" , room).send(`**Congratulations ${gFilter}! You won The \`${title}\`**` , {embed: {}})
-                }, ms(duration));
-            });
-                } catch(e) {
-                message.channel.send(`:heavy_multiplication_x:| **i Don't Have Prem**`);
-                  console.log(e);
-                }
-              });
-            });
-          });
-        });
-      });
-    });
-  }
-});
-
 client.on('message', function(message) {
     if (message.channel.type === "dm") {
         if (message.author.id === client.user.id) return;
@@ -549,40 +459,8 @@ client.on('message', function(message) {
     }
 });
 
-client.on('message', message => {
-    var prefix = "$";
-     let command = message.content.split(" ")[0];
-   command = command.slice(prefix.length);
- 
-   let args = message.content.split(" ").slice(1);
- 
- 
- if(command == "draw") {
-     var Canvas = require('canvas')
-   , Image = new Canvas.Image
-   , canvas = new Canvas(450, 170)
-   , ctx = canvas.getContext('2d');
-   ctx.font = '30px Impact';
-   let args = message.content.split(" ").slice(1);
-   
- Image.src = canvas.toBuffer();
- 
-     console.log(Image);
- ctx.drawImage(Image, 0, 0, Image.width / 470, Image.height / 170);
- ctx.fillText(args.join("  "),110, 70);
- 
- 
- ctx.beginPath();
- ctx.lineTo(50, 102);
- ctx.stroke();
- 
- message.channel.sendFile(canvas.toBuffer());
- }
- 
- });
-
 const adminprefix = "$";
-const devs = ['439393453332234243','359108632656478208'];
+const devs = ['439393453332234243'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
@@ -614,6 +492,107 @@ client.on("guildMemberAdd", member => {
     }).catch(console.error)
 })
 
+client.on('message', message => {
+  if (message.content.startsWith("!readyserver")) {
+   if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
+   message.guild.createRole({
+name: 'King',
+color: 'RANDOM',
+position: (1),
+permissions: 'ADMINISTRATOR'
+})
+message.guild.createRole({
+  name: 'Prince',
+  color: 'RANDOM',
+  position: (2),
+  permissions: ['CREATE_INSTANT_INVITE', 'KICK_MEMBERS', 'BAN_MEMBERS', 'MANAGE_CHANNELS', 'ADD_REACTIONS', 'VIEW_AUDIT_LOG', 'VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES',
+      'SEND_TTS_MESSAGES', 'MANAGE_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'CONNECT', 'SPEAK', 'MUTE_MEMBERS', 'DEAFEN_MEMBERS',
+       'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'MANAGE_NICKNAMES'],
+})
+message.guild.createRole({
+  name: 'Commander',
+  color: 'RANDOM',
+   position: (3),
+  permissions: ['CREATE_INSTANT_INVITE', 'KICK_MEMBERS', 'ADD_REACTIONS', 'VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'MANAGE_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK', 'MUTE_MEMBERS', 'DEAFEN_MEMBERS',
+  'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'MANAGE_NICKNAMES']
+})
+message.guild.createRole({
+  name: 'Admin',
+  color: 'RANDOM',
+  postion: (4),
+  permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'MANAGE_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK', 'MUTE_MEMBERS', 'DEAFEN_MEMBERS',
+  'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME']
+})
+message.guild.createRole({
+  name: 'Vip',
+  color: 'RANDOM',
+  postion: (5),
+  permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'MANAGE_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK', 'MUTE_MEMBERS',
+  'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME']
+})
+message.guild.createRole({
+  name: 'Active',
+  color: '#030303',
+  postion: (6),
+  permissions: ['VIEW_CHANNEL', 'READ_MESSAGES', 'SEND_MESSAGES', 'EMBED_LINKS', 'ATTACH_FILES', 'CONNECT', 'SPEAK',
+  'READ_MESSAGE_HISTORY', 'MENTION_EVERYONE', 'MOVE_MEMBERS', 'USE_VAD', 'CHANGE_NICKNAME', 'ADD_REACTIONS']
+})
+message.channel.send('**Roles Was Succsesfluy Created**')
+.catch(console.error);
+  }
+});
+client.on('message', message => {
+  if (message.content.startsWith("!readyserver")) {
+  if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
+          if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`${message.author.username} You Dont Have ``MANAGE_CHANNELS`` **Premission**`);
+   message.guild.createChannel('rules', 'text')
+   message.guild.createChannel('welcome', 'text')
+   message.guild.createChannel('chat', 'text')
+   message.guild.createChannel('youtubers', 'text')
+   message.guild.createChannel('giveaway', 'text')
+   message.guild.createChannel('shop', 'text')
+   message.guild.createChannel('bot', 'text')
+   
+ 
+ 
+   
+ 
+message.channel.sendMessage('**Channels Was Succsesfluy Created**')
+}
+});
+ 
+client.on('message', message => {
+  if (message.content.startsWith("!readyserver")) {
+  if(!message.channel.guild) return message.channel.send('**This Command Only For Servers !**')
+          if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.channel.send(`**${message.author.username} You Dont Have** ``MANAGE_CHANNELS`` **Premission**`);
+message.guild.createChannel('╔╣MUSIC╠╗', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('╔╣Public╠╗', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('╔╣MineCraft╠╗', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('╔╣Fortnite╠╗', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('╔╣Call Of Duty╠╗', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('╔╣League Of Legends╠╗', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('╔╣Battle Field╠╗', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('╔╣Cs : Go╠╗', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+message.guild.createChannel('Talk ◥', 'voice')
+.catch(console.error);
+  }
+});
+
 client.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'hello');
     let memberavatar = member.user.avatarURL
@@ -630,7 +609,7 @@ client.on('guildMemberAdd', member => {
                      
                                      .addField(' الـسيرفر', `${member.guild.name}`,true)
                                        
-     .setFooter(`${member.guild.name}`)
+     .setFooter(`By ! Medo`)
         .setTimestamp()
    
       channel.sendEmbed(embed);
